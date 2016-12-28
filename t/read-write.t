@@ -35,7 +35,7 @@ test_tcp(
             user     => 'test',
             password => 'tset',
         );
-        \$tc->run(\$^X, '-ple', q[last if /^\$/]);
+        \$tc->run(\$^X, '-ple', q[sleep 1,last if /^\$/]);
 EOF
         my $pty = IO::Pty::Easy->new;
         $pty->spawn($^X, (map {; '-I', $_ } @INC), '-e', $client_script);
